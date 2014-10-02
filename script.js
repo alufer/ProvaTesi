@@ -181,7 +181,7 @@ var main=function()
 		
 		addLight();
 		
-		camera = new THREE.PerspectiveCamera( 45, CANVAS.width/ CANVAS.height, .1, 10000 );
+		camera = new THREE.PerspectiveCamera( 90, CANVAS.width/ CANVAS.height, .1, 10000 );
 		camera.position.set(0,50,100);
 		camera.lookAt(scene.position);
 		
