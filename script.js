@@ -311,7 +311,7 @@ var main=function()
 		oculuscontrol.update( clock.getDelta() );
 				
 		effect.render( scene, camera );
-		//render();
+		render();
 	}
 	
 	
