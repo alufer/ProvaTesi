@@ -74,17 +74,7 @@ var main=function()
 		
 		scene = new THREE.Scene();
 		
-		//OCULUS
 		
-		effect = new THREE.OculusRiftEffect( renderer, { worldScale: 1 } );
-		effect.setSize( window.innerWidth, window.innerHeight );
-		
-		controls = new THREE.FirstPersonControls( camera );
-		controls.movementSpeed = 4000;
-		controls.lookSpeed = 3.0;
-		controls.lookVertical = true;
-
-		oculuscontrol = new THREE.OculusControls( camera );
 		
 		// add simple ground
 		
@@ -185,7 +175,19 @@ var main=function()
 		camera.position.set(0,50,100);
 		camera.lookAt(scene.position);
 		
-		THREEx.WindowResize(renderer, camera);
+		//OCULUS
+		
+		effect = new THREE.OculusRiftEffect( renderer, { worldScale: 1 } );
+		effect.setSize( window.innerWidth, window.innerHeight );
+		
+		controls = new THREE.FirstPersonControls( camera );
+		controls.movementSpeed = 4000;
+		controls.lookSpeed = 3.0;
+		controls.lookVertical = true;
+
+		oculuscontrol = new THREE.OculusControls( camera );
+		
+		//THREEx.WindowResize(renderer, camera);
 		/*
 		controls = new THREE.OrbitControls( camera, renderer.domElement );/*
 		controls.addEventListener( 'change', render );
@@ -311,7 +313,7 @@ var main=function()
 		oculuscontrol.update( clock.getDelta() );
 				
 		effect.render( scene, camera );
-		render();
+		//render();
 	}
 	
 	
