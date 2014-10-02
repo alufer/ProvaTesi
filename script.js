@@ -293,7 +293,7 @@ var main=function()
 			}
 			initWebGL();
 		}*/
-		
+		oculuscontrol.connect();
 		
 	}
 
