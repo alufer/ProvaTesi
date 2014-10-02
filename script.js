@@ -13,6 +13,9 @@ var main=function()
 	var obj_name="cube.obj";
 	var sphereGeometry = new THREE.SphereGeometry( 7.5, 16, 8 );
 	
+	var clock = new THREE.Clock();
+	var effect, controls, oculuscontrol;
+	
 	var position=
 	{
 		x:0.0,
@@ -70,6 +73,18 @@ var main=function()
 		renderer.physicallyBasedShading=true;
 		
 		scene = new THREE.Scene();
+		
+		//OCULUS
+		
+		effect = new THREE.OculusRiftEffect( renderer, { worldScale: 1 } );
+		effect.setSize( window.innerWidth, window.innerHeight );
+		
+		controls = new THREE.FirstPersonControls( camera );
+		controls.movementSpeed = 4000;
+		controls.lookSpeed = 3.0;
+		controls.lookVertical = true;
+
+		oculuscontrol = new THREE.OculusControls( camera );
 		
 		// add simple ground
 		
@@ -171,7 +186,7 @@ var main=function()
 		camera.lookAt(scene.position);
 		
 		THREEx.WindowResize(renderer, camera);
-		
+		/*
 		controls = new THREE.OrbitControls( camera, renderer.domElement );/*
 		controls.addEventListener( 'change', render );
 		controls.maxPolarAngle = Math.PI / 2;
@@ -286,11 +301,16 @@ var main=function()
 	{
 		// sezione per l'aggiornamento e l'animazione
 		
-	
+		var t = clock.getElapsedTime();
 	
 		requestAnimationFrame( animate );
 		render();
-		controls.update();
+		//controls.update();
+		
+		controls.update( clock.getDelta() );
+		oculuscontrol.update( clock.getDelta() );
+				
+		effect.render( scene, camera );
 	}
 	
 	
