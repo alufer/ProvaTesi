@@ -304,13 +304,14 @@ var main=function()
 		var t = clock.getElapsedTime();
 	
 		requestAnimationFrame( animate );
-		render();
+		
 		//controls.update();
 		
 		controls.update( clock.getDelta() );
 		oculuscontrol.update( clock.getDelta() );
 				
 		effect.render( scene, camera );
+		//render();
 	}
 	
 	
